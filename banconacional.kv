@@ -1,0 +1,61 @@
+<BancoNacionalWidget>:
+    orientation: 'vertical'
+    spacing: 30
+    padding: 80
+
+    Label:
+        id: header_label
+        text: "Banco Nacional da Republica Dominicana"
+        font_size: 22
+
+    Label:
+        id: label_display_saldo
+        text: root.text_display_saldo
+        font_size: 18
+
+    Button:
+        text: "Depositar"
+        on_press: root.on_press_operacao_depositar()
+
+    Button:
+        text: "Sacar"
+        on_press: root.on_press_operacao_sacar()
+
+    Button:
+        text: "Cancelar"
+        on_press: root.on_press_operacao_cancelar()
+
+<PopupOperacaoWidget>:
+    BoxLayout:
+        padding: 80
+        spacing: 80
+        orientation: "vertical"
+        BoxLayout:
+            orientation: "horizontal"
+            Label:
+                text: "Informe o valor:"
+            BoxLayout:
+                padding: 50
+                TextInput:
+                    text: "0.0"
+                    font_size: 22
+                    multiline: False
+                    on_text: root.on_text_update_valor(self.text)
+        Button:
+            id: button_efetuar_operacao
+            text: root.text_button_efetuar_operacao
+            on_press: root.on_press_efetuar_operacao()
+
+<PopupAlertaWidget>:
+    BoxLayout:
+        padding: 80
+        spacing: 80
+        orientation: 'vertical'
+        Label:
+            id: label_alerta
+            text: root.text_label_alerta
+            font_size: 30
+        Button:
+            id: button_retorno
+            text: root.text_button_retorno
+            on_press: root.dismiss()
